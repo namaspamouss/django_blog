@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}mon titre{% endblock title %}</title>
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
+    <script type="text/javascript" src="{% static 'blog/js.js' %}"></script>
+
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper green">
+            <a href ="/blog" class="brand-logo center">Blog</a>
+                {% block nav %}
+                <ul class="left hide-on-med-and-down">
+                    {% block nav-home %}<li><a href="/blog">Blog</a></li>{% endblock %}
+                    {% block nav-contact %}<li><a href="/blog/contact/">Contact</a></li>{% endblock %}
+                    {% block nav-admin %}<li><a href="/admin">Admin</a></li>{% endblock %}
+                </ul>
+                {% endblock %}
+            </div>
+        </nav>
+    </div>
+    <section id="content">
+        {% block content %}
+        {% endblock content %}
+    </section>
+</body>
+</html>

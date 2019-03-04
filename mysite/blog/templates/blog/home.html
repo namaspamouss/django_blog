@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Bienvenue sur mon blog{% endblock title %}
+{% block nav-home %}<li class="active"><a href="/blog">blog</a></li>{% endblock %}
+
+{% block content %}
+{% for article in articles %}
+
+<div class="container">
+<div class="col s12 m10">
+    <div class="row s10 m8">
+      <div class="card light-green darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">{{ article.titre|capfirst }}</span>
+          <p>{{ article.description|truncatewords:40 }}</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'article' article.id %}">lire la suite...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<!--
+    <p>
+        <div class="article_title">{{ article.titre }}</div>
+        <div>par:<img class="avatar" src="{{article.auteur.avatar.url}}"/>{{ article.auteur }} le: {{article.date}}<br></div>
+        {{ article.description|truncatewords:20 }}<a href="{% url 'article' article.id %}">lire la suite...</a><br>
+    </p>
+    -->
+{% endfor %}
+{% endblock content %}

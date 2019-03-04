@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}contact{% endblock title %}
+{% block nav-contact %}<li class="active"><a href="/blog/contact/">contact</a></li>{% endblock %}
+
+{% block content %}
+{% if envoi %}Votre message a bien été envoyé !{% endif %}
+
+<div class="container">
+<form class="col s12" action="{% url "contact" %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn green waves-effect waves-light" type="submit" name"submit">Valider
+        <i class="material-icons right">send</i>
+    </button>
+</form>
+</div>
+{% endblock content %}
